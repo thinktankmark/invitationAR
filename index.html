@@ -1,23 +1,122 @@
-
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
+
   <body>
-    <a-scene mindar-image="imageTargetSrc: ./assets/invitation.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene mindar-image="imageTargetSrc: ./assets/invitation.mind;"
+             renderer="colorManagement: true, physicallyCorrectLights"
+             vr-mode-ui="enabled: false"
+             device-orientation-permission-ui="enabled: false">
+
       <a-assets>
-	<img id="card" src="./assets/invitation.png" />
-	<a-asset-item id="avatarModel" src="./assets/pif-tower.glb"></a-asset-item>
+        <img id="card" src="./assets/invitation.png" />
+        <img id="time" src="./assets/time.png" />
+        <img id="info2" src="./assets/date.png" />
+        <img id="info3" src="./assets/location.png" />
+        <img id="info4" src="./assets/agenda.png" />
+
+        <a-asset-item id="towerModel" src="./assets/pif-tower.glb"></a-asset-item>
+        <a-asset-item id="timeIcon" src="./assets/time.glb"></a-asset-item>
+        <a-asset-item id="locationIcon" src="./assets/location.glb"></a-asset-item>
+        <a-asset-item id="dateIcon" src="./assets/date.glb"></a-asset-item>
+        <a-asset-item id="agendaIcon" src="./assets/agenda.glb"></a-asset-item> <!-- reusable small icons -->
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
-        <!-- <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane> -->
-        <a-gltf-model rotation="90 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel">
+
+        <!-- TOWER -->
+        <a-gltf-model src="#towerModel"
+                      rotation="90 0 0"
+                      position="0 0 0.1"
+                      scale="0.005 0.005 0.005">
+        </a-gltf-model>
+
+        <!-- ==================== -->
+        <!-- 4 ICONS ON LEFT SIDE -->
+        <!-- ==================== -->
+
+        <!-- ICON 1 -->
+        <a-gltf-model id="time"
+                      src="#timeIcon"
+                      position="-0.6 0.4 0"
+                      scale="0.08 0.08 0.08"
+                      class="clickable">
+        </a-gltf-model>
+
+        <!-- ICON 2 -->
+        <a-gltf-model id="location"
+                      src="#locationModel"
+                      position="-0.6 0.15 0"
+                      scale="0.08 0.08 0.08"
+                      class="clickable">
+        </a-gltf-model>
+
+        <!-- ICON 3 -->
+        <a-gltf-model id="date"
+                      src="#dateModel"
+                      position="-0.6 -0.1 0"
+                      scale="0.08 0.08 0.08"
+                      class="clickable">
+        </a-gltf-model>
+
+        <!-- ICON 4 -->
+        <a-gltf-model id="agenda"
+                      src="#agendaModel"
+                      position="-0.6 -0.35 0"
+                      scale="0.08 0.08 0.08"
+                      class="clickable">
+        </a-gltf-model>
+
+        <!-- ===================== -->
+        <!-- IMAGE POPUP PLANES   -->
+        <!-- Hidden until clicked -->
+        <!-- ===================== -->
+
+        <a-plane id="popup"
+                 src=""
+                 position="0 0 0.3"
+                 width="0.8"
+                 height="0.8"
+                 visible="false">
+        </a-plane>
+
       </a-entity>
+
+      <!-- CLICK HANDLER -->
+      <script>
+        const popup = document.querySelector("#popup");
+
+        document.querySelector("#time").addEventListener("click", () => {
+          popup.setAttribute("src", "#time");
+          popup.setAttribute("visible", "true");
+        });
+
+        document.querySelector("#location").addEventListener("click", () => {
+          popup.setAttribute("src", "#location");
+          popup.setAttribute("visible", "true");
+        });
+
+        document.querySelector("#date").addEventListener("click", () => {
+          popup.setAttribute("src", "#date");
+          popup.setAttribute("visible", "true");
+        });
+
+        document.querySelector("#agenda").addEventListener("click", () => {
+          popup.setAttribute("src", "#agenda");
+          popup.setAttribute("visible", "true");
+        });
+
+        // Hide popup when clicked
+        popup.addEventListener("click", () => {
+          popup.setAttribute("visible", "false");
+        });
+      </script>
+
     </a-scene>
   </body>
 </html>
