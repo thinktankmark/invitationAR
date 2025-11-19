@@ -13,10 +13,10 @@
 
       <a-assets>
         <img id="card" src="./assets/invitation.png" />
-        <img id="time" src="./assets/time.png" />
-        <img id="info2" src="./assets/date.png" />
-        <img id="info3" src="./assets/location.png" />
-        <img id="info4" src="./assets/agenda.png" />
+        <img id="timeInfo" src="./assets/time.png" />
+        <img id="dateInfo" src="./assets/date.png" />
+        <img id="locationInfo" src="./assets/location.png" />
+        <img id="agendaInfo" src="./assets/agenda.png" />
 
         <a-asset-item id="towerModel" src="./assets/pif-tower.glb"></a-asset-item>
         <a-asset-item id="timeIcon" src="./assets/time.glb"></a-asset-item>
@@ -44,38 +44,37 @@
         <a-gltf-model id="time"
                       src="#timeIcon"
                       position="-0.6 0.4 0"
-                      scale="0.08 0.08 0.08"
+                      scale="0.01 0.01 0.01"
+                      rotation="90 0 0"
                       class="clickable">
         </a-gltf-model>
 
         <!-- ICON 2 -->
         <a-gltf-model id="location"
-                      src="#locationModel"
+                      src="#locationIcon"
                       position="-0.6 0.15 0"
-                      scale="0.08 0.08 0.08"
+                      scale="0.01 0.01 0.01"
+                      rotation="90 0 0"
                       class="clickable">
         </a-gltf-model>
 
         <!-- ICON 3 -->
         <a-gltf-model id="date"
-                      src="#dateModel"
+                      src="#dateIcon"
                       position="-0.6 -0.1 0"
-                      scale="0.08 0.08 0.08"
+                      scale="0.01 0.01 0.01"
+                      rotation="90 0 0"
                       class="clickable">
         </a-gltf-model>
 
         <!-- ICON 4 -->
         <a-gltf-model id="agenda"
-                      src="#agendaModel"
+                      src="#agendaIcon"
                       position="-0.6 -0.35 0"
-                      scale="0.08 0.08 0.08"
+                      scale="0.01 0.01 0.01"
+                      rotation="90 0 0"
                       class="clickable">
         </a-gltf-model>
-
-        <!-- ===================== -->
-        <!-- IMAGE POPUP PLANES   -->
-        <!-- Hidden until clicked -->
-        <!-- ===================== -->
 
         <a-plane id="popup"
                  src=""
@@ -92,22 +91,22 @@
         const popup = document.querySelector("#popup");
 
         document.querySelector("#time").addEventListener("click", () => {
-          popup.setAttribute("src", "#time");
+          popup.setAttribute("src", "#timeInfo");
           popup.setAttribute("visible", "true");
         });
 
         document.querySelector("#location").addEventListener("click", () => {
-          popup.setAttribute("src", "#location");
+          popup.setAttribute("src", "#locationInfo");
           popup.setAttribute("visible", "true");
         });
 
         document.querySelector("#date").addEventListener("click", () => {
-          popup.setAttribute("src", "#date");
+          popup.setAttribute("src", "#dateInfo");
           popup.setAttribute("visible", "true");
         });
 
         document.querySelector("#agenda").addEventListener("click", () => {
-          popup.setAttribute("src", "#agenda");
+          popup.setAttribute("src", "#agendaInfo");
           popup.setAttribute("visible", "true");
         });
 
